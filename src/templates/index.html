@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Итоговая аттестация</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row align-items-center mt-5">
+                <div class="col-12 col-md-8 col-lg-9 text-center text-md-start">
+                    <h1 class="title mt-3">Итоговая аттестация по курсу Аналитик данных (Data scientist)</h1>
+                    <p class="title mt-0">Приложение для прогнозирования размеров сварного шва при электронно-лучевой
+                        сварке тонкостенных конструкций аэрокосмического назначения</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        {% if depth and width %}
+        <div class="container glass mt-5 p-3 p-md-5">
+            <h3>Получены результаты:</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Глубина шва</td>
+                        <td class="values">{{ depth }}</td>
+                        <td>мм</td>
+                    </tr>
+                    <tr>
+                        <td>Ширина шва</td>
+                        <td class="values">{{ width }}</td>
+                        <td>мм</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+        <div class="container glass my-5 p-3 p-md-5">
+            <h2>Введите исходные параметры</h2>
+            <form action="{{url_for('main')}}" method="POST">
+                <div class="row d-flex align-items-center">                   
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="iw" id="iw" placeholder="48.0">
+                            <label for="iw">Сварочный ток (IW)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">А</div>
+                </div>
+
+                <div class="row d-flex align-items-center">
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="if" id="if" placeholder="48.0">
+                            <label for="if">Тока фокусировки (IF)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">А</div>
+                </div>
+
+                <div class="row d-flex align-items-center">
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="vw" id="vw" placeholder="48.0">
+                            <label for="vw">Скорость сварки (VW)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle text-nowrap mt-3">мм/с</div>
+                </div>
+
+                <div class="row d-flex align-items-center ">
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="fp" id="fp" placeholder="48.0">
+                            <label for="fp">Расстояние (FP)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">мм</div>
+                </div>
+                <div class="w-100 text-center mt-5">
+                    <input type="submit" class="btn btn-lg btn-success">
+                </div>
+            </form>
+        </div>
+
+    </main>
+</body>
+
+</html>
